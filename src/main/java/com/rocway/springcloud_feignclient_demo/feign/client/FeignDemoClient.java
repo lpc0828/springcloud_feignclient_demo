@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "demo", url = "${api.service.host}", fallback = FeignDemoClientFallBack.class)
+@FeignClient(name = "demo", value = "demo", url = "${api.service.host}", fallback = FeignDemoClientFallBack.class)
 @RequestMapping("/feign/demo")
 public interface FeignDemoClient {
 
     @RequestMapping("total.do")
-    ApiResult<DemoDTO> total(@CookieValue(value = "cookie", required = false) String cookie,
+    ApiResult<DemoDTO> testTotal(@CookieValue(value = "cookie", required = false) String cookie,
                              @RequestHeader(value = "header", required = false) String header,
                              @RequestParam(value = "value", required = false) Integer value,
                              @RequestParam(value = "array", required = false) Integer[] array,
@@ -26,7 +26,7 @@ public interface FeignDemoClient {
 class FeignDemoClientFallBack implements FeignDemoClient {
 
     @Override
-    public ApiResult<DemoDTO> total(String cookie, String header, Integer value, Integer[] array, List<Integer> list) {
+    public ApiResult<DemoDTO> testTotal(String cookie, String header, Integer value, Integer[] array, List<Integer> list) {
         return defaultRes();
     }
 

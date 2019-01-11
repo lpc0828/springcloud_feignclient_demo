@@ -15,6 +15,5 @@ public class SpringcloudFeignclientDemoApplication {
             e.printStackTrace();
         }
     }
-
 }
 

@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("feign/demo")
 @RestController
+@RequestMapping("/feign/demo")
 public class FeignTestController {
 
-    @RequestMapping(value = "total.do", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "total.do")
     @ResponseBody
     ApiResult<DemoDTO> total(@CookieValue(value = "cookie", required = false) String cookie,
                              @RequestHeader(value = "header", required = false) String header,
